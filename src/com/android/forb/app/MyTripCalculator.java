@@ -96,7 +96,7 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 
 		final LinearLayout externLinerLayout = new LinearLayout(this);
 		externLinerLayout.setWeightSum(100);
-		externLinerLayout.setOrientation(LinearLayout.HORIZONTAL);
+		externLinerLayout.setOrientation(LinearLayout.VERTICAL);
 		
 		final LinearLayout textLinearLayout = new LinearLayout(this);
 		textLinearLayout.setId(100 + idCounter);
