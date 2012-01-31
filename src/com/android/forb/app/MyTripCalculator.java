@@ -83,6 +83,9 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 		AppUtil.hideSwKeyBoard(etNumeroPassageiros, MyTripCalculator.this);
 	}
 
+	/**
+	 * 
+	 */
 	private void doAddItem() {
 		if (idCounter == MAX_NUM_ITENS) {
 			ToastUtil.show(MyTripCalculator.this,
