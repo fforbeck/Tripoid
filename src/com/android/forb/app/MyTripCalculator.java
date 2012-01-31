@@ -92,27 +92,35 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 
 		idCounter++;
 
-		final LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.myLinearLayout);
+		final LinearLayout mainLinearLayout = (LinearLayout) findViewById(R.id.myLinearLayout);
 
-		final LinearLayout newLLayout = new LinearLayout(this);
-		newLLayout.setId(100 + idCounter);
-		newLLayout.setWeightSum(100F);
-
+		final LinearLayout externLinerLayout = new LinearLayout(this);
+		externLinerLayout.setWeightSum(100);
+		externLinerLayout.setOrientation(LinearLayout.HORIZONTAL);
+		
+		final LinearLayout textLinearLayout = new LinearLayout(this);
+		textLinearLayout.setId(100 + idCounter);
+		textLinearLayout.setWeightSum(80);
+		textLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
 		final EditText editText = new EditText(this);
 		editText.setId(idCounter);
 		editText.setHint("Exemplo: 30.50 (Pneu furado)");
 		editText.setFocusable(true);
 		editText.setFocusableInTouchMode(true);
-		editText.setWidth(LayoutParams.FILL_PARENT);
-		editText.setHeight(LayoutParams.MATCH_PARENT);
 		editText.setInputType(InputType.TYPE_CLASS_NUMBER);
-		mLinearLayout.addView(editText);
-
+		editText.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+		textLinearLayout.addView(editText);
+		externLinerLayout.addView(textLinearLayout);
+		
+		
+		final LinearLayout buttonLinearLayout = new LinearLayout(this);
+		buttonLinearLayout.setId(100 + idCounter);
+		buttonLinearLayout.setWeightSum(20);
+		buttonLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
 		final Button button = new Button(this);
 		button.setId(10 + idCounter);
-		button.setWidth(LayoutParams.FILL_PARENT);
-		button.setHeight(LayoutParams.MATCH_PARENT);
 		button.setText("X");
+		button.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
 		button.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -127,7 +135,10 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 				idCounter--;
 			}
 		});
-		mLinearLayout.addView(button);
+		
+		buttonLinearLayout.addView(button);
+		externLinerLayout.addView(buttonLinearLayout);
+		mainLinearLayout.addView(externLinerLayout);
 	}
 
 	private boolean isValidState() {
