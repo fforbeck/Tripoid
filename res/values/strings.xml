@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, TripCalc!</string>
-    <string name="app_name">trip-calculator</string>
+    <string name="app_name">Tripoid</string>
 </resources>

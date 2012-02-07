@@ -45,6 +45,7 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 		tvResultado = (TextView) findViewById(R.id.tvResultado);
 		tvResultadoPorPassageiro = (TextView) findViewById(R.id.tvResultadoPorPassageiro);
 
+		
 		etKm = (EditText) findViewById(R.id.etKm);
 		etKmL = (EditText) findViewById(R.id.etKmL);
 		etValorCombustivel = (EditText) findViewById(R.id.etValorCombustivel);
@@ -55,6 +56,15 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 
 		buttonAddItem = (Button) findViewById(R.id.btAddItem);
 		buttonAddItem.setOnClickListener(MyTripCalculator.this);
+
+		setValues();
+	}
+
+	private void setValues() {
+		etKm.setText("300");
+		etKmL.setText("11.5");
+		etValorCombustivel.setText("1.80");
+		etNumeroPassageiros.setText("4");
 	}
 
 	public void onClick(View v) {
@@ -72,15 +82,32 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 	}
 
 	private void doCalcular() {
-		tvResultado.setText("Total da despesa: " + calcular());
+		double sum = sumItens();
+		tvResultado.setText("Total da despesa: R$ " + calcular(sum));
 		final Random rd = new Random();
 		tvResultado.setTextSize(25);
-		tvResultado.setTextColor(rgb(rd.nextInt(265), rd.nextInt(265),
-				rd.nextInt(265)));
-		tvResultadoPorPassageiro.setText("Despesa por passageiro: "
-				+ dividirPorNumeroPassageiros());
+		int r = rd.nextInt(265), g = rd.nextInt(265), b = rd.nextInt(265);
+		tvResultado.setTextColor(rgb(r,g,b));
+		
+		System.out.println(r + " " + g + " " + b);
+		
+		tvResultadoPorPassageiro.setText("Despesa por passageiro: R$ "
+				+ dividirPorNumeroPassageiros(sum));
+		tvResultadoPorPassageiro.setTextColor(rgb(r, g, b));
 
 		AppUtil.hideSwKeyBoard(etNumeroPassageiros, MyTripCalculator.this);
+	}
+
+	private double sumItens() {
+		double sum = 0.0;
+		for (int i = 1; i <= idCounter; i++) {
+			try {
+				sum += toDouble((EditText) findViewById(100 + idCounter));
+			} catch (Exception e) {
+				// ignored because edit text is empty
+			}
+		}
+		return sum;
 	}
 
 	private void doAddItem() {
@@ -95,32 +122,35 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 		final LinearLayout mainLinearLayout = (LinearLayout) findViewById(R.id.myLinearLayout);
 
 		final LinearLayout externLinerLayout = new LinearLayout(this);
+		externLinerLayout.setId(7 * idCounter);
 		externLinerLayout.setWeightSum(100);
 		externLinerLayout.setOrientation(LinearLayout.HORIZONTAL);
-		
+
 		final LinearLayout textLinearLayout = new LinearLayout(this);
-		textLinearLayout.setId(100 + idCounter);
+		textLinearLayout.setId(1000 + idCounter);
 		textLinearLayout.setWeightSum(80);
 		textLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+		textLinearLayout.setPadding(10, 0, 0, 5);
 		final EditText editText = new EditText(this);
-		editText.setId(idCounter);
+		editText.setId(100 + idCounter);
 		editText.setHint("Exemplo: 30.50 (Pneu furado)");
 		editText.setFocusable(true);
 		editText.setFocusableInTouchMode(true);
 		editText.setInputType(InputType.TYPE_CLASS_NUMBER);
 		editText.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+		
 		textLinearLayout.addView(editText);
 		externLinerLayout.addView(textLinearLayout);
-		
-		
+
 		final LinearLayout buttonLinearLayout = new LinearLayout(this);
-		buttonLinearLayout.setId(100 + idCounter);
-		buttonLinearLayout.setWeightSum(20);
+		buttonLinearLayout.setId(10 + idCounter);
+		buttonLinearLayout.setWeightSum(25);
 		buttonLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+		buttonLinearLayout.setPadding(0, 0, 10, 5);
 		final Button button = new Button(this);
-		button.setId(10 + idCounter);
+		button.setId(idCounter);
 		button.setText("X");
-		button.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+		button.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.MATCH_PARENT));
 		button.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -130,12 +160,11 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 				}
 
 				final LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.myLinearLayout);
-				mLinearLayout.removeView(findViewById(idCounter));
-				mLinearLayout.removeView(v);
+				mLinearLayout.removeView(findViewById(7 * v.getId()));
 				idCounter--;
 			}
 		});
-		
+
 		buttonLinearLayout.addView(button);
 		externLinerLayout.addView(buttonLinearLayout);
 		mainLinearLayout.addView(externLinerLayout);
@@ -179,13 +208,13 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 
 	}
 
-	private Double calcular() {
-		return round(toDouble(etKm) / toDouble(etKmL)
-				* toDouble(etValorCombustivel));
+	private Double calcular(double sum) {
+		return round(sum + (toDouble(etKm) / toDouble(etKmL)
+						* toDouble(etValorCombustivel)));
 	}
 
-	private Double dividirPorNumeroPassageiros() {
-		return round(calcular() / toDouble(etNumeroPassageiros));
+	private Double dividirPorNumeroPassageiros(double sum) {
+		return round(calcular(sum) / toDouble(etNumeroPassageiros));
 	}
 
 }
