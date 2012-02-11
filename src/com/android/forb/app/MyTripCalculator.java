@@ -6,7 +6,9 @@ import static com.android.forb.util.NumberUtil.round;
 import static com.android.forb.util.NumberUtil.toDouble;
 import static com.android.forb.util.StringUtil.isBlank;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,6 +24,8 @@ import com.android.forb.util.AppUtil;
 import com.android.forb.util.ToastUtil;
 
 public class MyTripCalculator extends Activity implements View.OnClickListener {
+	
+	private static final Set<Integer> IDS = new HashSet<Integer>();
 
 	private static final int MAX_NUM_ITENS = 7;
 	private Button buttonCalcular;
@@ -83,16 +87,16 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 
 	private void doCalcular() {
 		double sum = sumItens();
-		tvResultado.setText("Total da despesa: R$ " + calcular(sum));
+		final Double amount = calcular(sum);
+		tvResultado.setText("Total da despesa: R$ " + amount);
+		
 		final Random rd = new Random();
 		tvResultado.setTextSize(25);
 		int r = rd.nextInt(265), g = rd.nextInt(265), b = rd.nextInt(265);
 		tvResultado.setTextColor(rgb(r,g,b));
 		
-		System.out.println(r + " " + g + " " + b);
-		
 		tvResultadoPorPassageiro.setText("Despesa por passageiro: R$ "
-				+ dividirPorNumeroPassageiros(sum));
+				+ dividirPorNumeroPassageiros(amount));
 		tvResultadoPorPassageiro.setTextColor(rgb(r, g, b));
 
 		AppUtil.hideSwKeyBoard(etNumeroPassageiros, MyTripCalculator.this);
@@ -100,7 +104,7 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 
 	private double sumItens() {
 		double sum = 0.0;
-		for (int i = 1; i <= idCounter; i++) {
+		for (Integer id : IDS) {
 			try {
 				sum += toDouble((EditText) findViewById(100 + idCounter));
 			} catch (Exception e) {
@@ -111,13 +115,15 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 	}
 
 	private void doAddItem() {
-		if (idCounter == MAX_NUM_ITENS) {
+		if (IDS.size() == MAX_NUM_ITENS) {
 			ToastUtil.show(MyTripCalculator.this,
 					"Não é permitido inserir mais itens.");
 			return;
 		}
-
+		
 		idCounter++;
+		
+		IDS.add(idCounter);
 
 		final LinearLayout mainLinearLayout = (LinearLayout) findViewById(R.id.myLinearLayout);
 
@@ -155,13 +161,16 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-				if (idCounter == 0) {
+				if (IDS.size() == 0) {
 					return;
 				}
 
 				final LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.myLinearLayout);
-				mLinearLayout.removeView(findViewById(7 * v.getId()));
-				idCounter--;
+				int toRemoveId = v.getId();
+				mLinearLayout.removeView(findViewById(7 * toRemoveId));
+				if (IDS.contains(toRemoveId)) {
+					IDS.remove(toRemoveId);
+				}
 			}
 		});
 
@@ -213,8 +222,8 @@ public class MyTripCalculator extends Activity implements View.OnClickListener {
 						* toDouble(etValorCombustivel)));
 	}
 
-	private Double dividirPorNumeroPassageiros(double sum) {
-		return round(calcular(sum) / toDouble(etNumeroPassageiros));
+	private Double dividirPorNumeroPassageiros(double amout) {
+		return round(amout/ toDouble(etNumeroPassageiros));
 	}
 
 }
