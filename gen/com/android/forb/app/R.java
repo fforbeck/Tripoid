@@ -12,34 +12,44 @@ public final class R {
     }
     public static final class drawable {
         public static final int app_icon=0x7f020000;
-        public static final int bt_calculator=0x7f020001;
-        public static final int calculator=0x7f020002;
+        public static final int ic_tab_calc_comb=0x7f020001;
+        public static final int ic_tab_calc_viagem=0x7f020002;
         public static final int icon=0x7f020003;
         public static final int minus=0x7f020004;
         public static final int plus=0x7f020005;
         public static final int splash=0x7f020006;
     }
     public static final class id {
-        public static final int btAddItem=0x7f06000c;
-        public static final int btCalcular=0x7f06000d;
-        public static final int etKm=0x7f060003;
-        public static final int etKmL=0x7f060005;
-        public static final int etNumeroPassageiros=0x7f060009;
-        public static final int etValorCombustivel=0x7f060007;
-        public static final int linearLayout1=0x7f06000e;
-        public static final int myLinearLayout=0x7f060001;
-        public static final int scrollView1=0x7f060000;
-        public static final int textView2=0x7f06000f;
-        public static final int tvKm=0x7f060002;
-        public static final int tvKmL=0x7f060004;
-        public static final int tvNumeroPassageiros=0x7f060008;
-        public static final int tvResultado=0x7f06000a;
-        public static final int tvResultadoPorPassageiro=0x7f06000b;
-        public static final int tvValorCombustivel=0x7f060006;
+        public static final int btAddItem=0x7f060016;
+        public static final int btCalcular=0x7f060017;
+        public static final int btVerCombustivelRecomendado=0x7f060007;
+        public static final int etKm=0x7f06000c;
+        public static final int etKmL=0x7f06000e;
+        public static final int etNumeroPassageiros=0x7f060012;
+        public static final int etPrecoEtanol=0x7f060004;
+        public static final int etPrecoGasolina=0x7f060006;
+        public static final int etValorCombustivel=0x7f060010;
+        public static final int linearLayout1=0x7f060000;
+        public static final int myLinearLayout=0x7f06000a;
+        public static final int tabCalcCombustivel=0x7f060002;
+        public static final int tabCalcViagem=0x7f060009;
+        public static final int textView1=0x7f060013;
+        public static final int textView2=0x7f060001;
+        public static final int tvCombustivelRecomendado=0x7f060008;
+        public static final int tvKm=0x7f06000b;
+        public static final int tvKmL=0x7f06000d;
+        public static final int tvNumeroPassageiros=0x7f060011;
+        public static final int tvPrecoEtanol=0x7f060003;
+        public static final int tvPrecoGasolina=0x7f060005;
+        public static final int tvResultado=0x7f060014;
+        public static final int tvResultadoPorPassageiro=0x7f060015;
+        public static final int tvValorCombustivel=0x7f06000f;
     }
     public static final class layout {
         public static final int main=0x7f030000;
         public static final int splash=0x7f030001;
+        public static final int tab_calculadora_combustivel=0x7f030002;
+        public static final int tab_calculadora_vigem=0x7f030003;
     }
     public static final class string {
         public static final int app_name=0x7f040000;

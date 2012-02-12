@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tabCalcViagem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/myLinearLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tvKm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Km" />
+
+            <EditText
+                android:id="@+id/etKm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="300"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/tvKmL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Km/L" />
+
+            <EditText
+                android:id="@+id/etKmL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="11.5"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/tvValorCombustivel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Valor do combustível" />
+
+            <EditText
+                android:id="@+id/etValorCombustivel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="1.79"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/tvNumeroPassageiros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Número de passageiros" />
+
+            <EditText
+                android:id="@+id/etNumeroPassageiros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="4"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total: R$ "
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/tvResultado"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total / passageiro: R$ "
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/tvResultadoPorPassageiro"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingBottom="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="100" >
+
+            <Button
+                android:id="@+id/btAddItem"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="75"
+                android:paddingLeft="10dp"
+                android:text="Novo item" />
+
+            <Button
+                android:id="@+id/btCalcular"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="30"
+                android:paddingRight="10dp"
+                android:text="Calcular" >
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
