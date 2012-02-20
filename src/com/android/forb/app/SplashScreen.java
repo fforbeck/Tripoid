@@ -14,7 +14,7 @@ public class SplashScreen extends Activity {
 		final Thread timer = new Thread() {
 			public void run() {
 				try {
-					sleep(5000);
+					sleep(3800);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				} finally {
@@ -24,5 +24,12 @@ public class SplashScreen extends Activity {
 			};
 		};
 		timer.start();
+	}
+	
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+		this.finish();
 	}
 }

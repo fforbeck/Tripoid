@@ -5,10 +5,11 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
-public class TripoidActivity extends TabActivity {
+public class TripoidActivity extends TabActivity implements View.OnClickListener {
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -20,27 +21,41 @@ public class TripoidActivity extends TabActivity {
 	private void init() {
 		final TabHost tabHost = getTabHost();
 		tabHost.setup();
-
 		final Resources res = getResources();
-		Intent intent;
 		
-		intent = new Intent().setClass(this, CalculadoraViagemActivity.class);
+		createTabCalculadoraViagem(tabHost, res);
+		createTabCalculadoraCombustivel(tabHost, res);
+		createTabCalculadoraConsumo(tabHost, res);
+	}
+
+	private void createTabCalculadoraViagem(final TabHost tabHost, final Resources res) {
+		final Intent intent = new Intent().setClass(this, CalculadoraViagemActivity.class);
 		newTabSpec(tabHost, 
 				"calc_viagem", 
 				R.id.tabCalcViagem, 
-				"Viagem", 
+				"Calculadora", 
 				res.getDrawable(R.drawable.ic_tab_calc_viagem), 
 				intent);
-		
-		intent = new Intent().setClass(this, CalculadoraCombustivelActivity.class);
+	}
+	
+	private void createTabCalculadoraCombustivel(final TabHost tabHost, final Resources res) {
+		final Intent intent = new Intent().setClass(this, CalculadoraCombustivelActivity.class);
 		newTabSpec(tabHost, 
 				"calc_viagem", 
 				R.id.tabCalcCombustivel, 
 				"Combustível", 
 				res.getDrawable(R.drawable.ic_tab_calc_comb), 
 				intent);
-		
-	    tabHost.setCurrentTab(2);
+	}
+	
+	private void createTabCalculadoraConsumo(TabHost tabHost, Resources res) {
+		final Intent intent = new Intent().setClass(this, CalculadoraViagemActivity.class);
+		newTabSpec(tabHost, 
+				"calc_consumo", 
+				R.id.tabCalcConsumo, 
+				"Consumo", 
+				res.getDrawable(R.drawable.ic_tab_calc_consumo), 
+				intent);
 	}
 	
 	private void newTabSpec(final TabHost tabHost, String tag, int tabId, String label, Drawable icon, Intent intent) {
@@ -48,6 +63,10 @@ public class TripoidActivity extends TabActivity {
 		tabSpec.setContent(tabId);
 		tabSpec.setIndicator(label, icon);
 		tabHost.addTab(tabSpec);
+	}
+
+	@Override
+	public void onClick(View v) {
 	}
 
 }

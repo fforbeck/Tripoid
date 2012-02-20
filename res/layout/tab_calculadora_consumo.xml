@@ -1,36 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tabCalcCombustivel"
+    android:id="@+id/tabCalcConsumo"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/tvPrecoEtanol"
+        android:id="@+id/tvKmInicial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Preço do Etanol" />
+        android:text="Km inicial" />
 
     <EditText
-        android:id="@+id/etPrecoEtanol"
+        android:id="@+id/etKmInicial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/tvKmFinal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Km final" />
+
+    <EditText
+        android:id="@+id/etKmFinal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/tvLCombustivel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Combustível (L)" />
+
+    <EditText
+        android:id="@+id/etLCombustivel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/tvPrecoGasolina"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Preço da Gasolina" />
-
-    <EditText
-        android:id="@+id/etPrecoGasolina"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal" />
-
-    <TextView
-        android:id="@+id/tvCombustivelRecomendado"
+        android:id="@+id/tvConsumoMedio"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -48,15 +60,15 @@
         android:weightSum="100" >
 
         <Button
-            android:id="@+id/btVerCombustivelRecomendado"
+            android:id="@+id/btCalcularConsumo"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
-            android:layout_weight="30"
+            android:layout_weight="50"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
-            android:text="Qual combustível?" />
+            android:text="Calcular" />
     </LinearLayout>
 
 </LinearLayout>

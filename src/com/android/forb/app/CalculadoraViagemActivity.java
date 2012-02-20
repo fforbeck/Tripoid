@@ -17,11 +17,11 @@ import com.android.forb.util.AppUtil;
 import com.android.forb.util.ToastUtil;
 
 public class CalculadoraViagemActivity extends TabActivity implements View.OnClickListener {
-	
-	private static final int MAX_NUM_ITENS = 7;
-	
+
+	private static final int MAX_NUM_ITENS = 10;
+
 	private ItemController itemControler;
-	
+
 	private Button buttonCalcular;
 	private TextView tvResultado;
 	private EditText etKm;
@@ -30,18 +30,17 @@ public class CalculadoraViagemActivity extends TabActivity implements View.OnCli
 	private TextView tvResultadoPorPassageiro;
 	private EditText etNumeroPassageiros;
 	private View buttonAddItem;
-	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		init();
 	}
-	
+
 	private void init() {
 		tvResultado = (TextView) findViewById(R.id.tvResultado);
 		tvResultadoPorPassageiro = (TextView) findViewById(R.id.tvResultadoPorPassageiro);
-		
+
 		etKm = (EditText) findViewById(R.id.etKm);
 		etKmL = (EditText) findViewById(R.id.etKmL);
 		etValorCombustivel = (EditText) findViewById(R.id.etValorCombustivel);
@@ -52,12 +51,12 @@ public class CalculadoraViagemActivity extends TabActivity implements View.OnCli
 
 		buttonAddItem = (Button) findViewById(R.id.btAddItem);
 		buttonAddItem.setOnClickListener(CalculadoraViagemActivity.this);
-		
+
 		itemControler = ItemController.getInstance();
 
 		setValues();
 	}
-
+	
 	private void setValues() {
 		etKm.setText("300");
 		etKmL.setText("11.5");
@@ -65,6 +64,7 @@ public class CalculadoraViagemActivity extends TabActivity implements View.OnCli
 		etNumeroPassageiros.setText("4");
 	}
 
+	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btCalcular:
@@ -82,24 +82,26 @@ public class CalculadoraViagemActivity extends TabActivity implements View.OnCli
 	private void doCalcular() {
 		double sum = itemControler.sumItens(this);
 		final Double amount = calcular(sum);
-		
-		tvResultado.setTextSize(25);
-		tvResultado.setTextColor(rgb(53,201,252));
-		tvResultado.setText(String.valueOf(amount));
-		
-//		26 164 169
-//		215 250 233
-//		262 88 248 
-//		36 246 155
-//		77 81 214
-//		150 131 247
-//		120 218 54
-//		53 201 252
-		
-		tvResultadoPorPassageiro.setTextColor(rgb(120, 218, 54));
-		tvResultadoPorPassageiro.setText(String.valueOf(dividirPorNumeroPassageiros(amount)));
 
-		AppUtil.hideSwKeyBoard(etNumeroPassageiros, CalculadoraViagemActivity.this);
+		tvResultado.setTextSize(25);
+		tvResultado.setTextColor(rgb(53, 201, 252));
+		tvResultado.setText(String.valueOf(amount));
+
+		// 26 164 169
+		// 215 250 233
+		// 262 88 248
+		// 36 246 155
+		// 77 81 214
+		// 150 131 247
+		// 120 218 54
+		// 53 201 252
+
+		tvResultadoPorPassageiro.setTextColor(rgb(120, 218, 54));
+		tvResultadoPorPassageiro.setText(String
+				.valueOf(dividirPorNumeroPassageiros(amount)));
+
+		AppUtil.hideSwKeyBoard(etNumeroPassageiros,
+				CalculadoraViagemActivity.this);
 	}
 
 	private void doAddItem() {
@@ -108,8 +110,9 @@ public class CalculadoraViagemActivity extends TabActivity implements View.OnCli
 					"Não é permitido inserir mais itens.");
 			return;
 		}
-		
-		itemControler.newItem(this, (LinearLayout) findViewById(R.id.myLinearLayout));
+
+		itemControler.newItem(this,
+				(LinearLayout) findViewById(R.id.firstLinearLayout));
 	}
 
 	private boolean isValidState() {
@@ -151,12 +154,12 @@ public class CalculadoraViagemActivity extends TabActivity implements View.OnCli
 	}
 
 	private Double calcular(double sum) {
-		return round(sum + (toDouble(etKm) / toDouble(etKmL)
-						* toDouble(etValorCombustivel)));
+		return round(sum
+				+ (toDouble(etKm) / toDouble(etKmL) * toDouble(etValorCombustivel)));
 	}
 
 	private Double dividirPorNumeroPassageiros(double amout) {
-		return round(amout/ toDouble(etNumeroPassageiros));
+		return round(amout / toDouble(etNumeroPassageiros));
 	}
 
 }
