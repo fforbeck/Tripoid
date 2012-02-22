@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/darker_gray" >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -19,7 +18,7 @@
         android:layout_marginTop="81dp"
         android:shadowDx="100"
         android:shadowRadius="100"
-        android:text="Calculadora para viagens"
+        android:text="@string/lbl_slogan"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

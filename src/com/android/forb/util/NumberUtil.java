@@ -7,6 +7,10 @@ import android.widget.EditText;
 
 public class NumberUtil {
 
+	public static final boolean isZeroOrNull(EditText editText) {
+		return isZeroOrNull(toDouble(editText));
+	}
+	
 	public static final boolean isZeroOrNull(Number number) {
 		return number == null || number.equals(0) || number.equals(0L)
 				|| number.equals(0F) || number.equals(0D);
@@ -24,6 +28,10 @@ public class NumberUtil {
 		
 		return Double.parseDouble(editText.getText().toString());
 		
+	}
+
+	public static boolean ge(double valueA, double valueB) {
+		return Double.compare(valueA, valueB) >= 0;
 	}
 
 }

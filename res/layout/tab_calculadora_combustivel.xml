@@ -9,7 +9,7 @@
         android:id="@+id/tvPrecoEtanol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Preço do Etanol" />
+        android:text="@string/lbl_preco_do_etanol" />
 
     <EditText
         android:id="@+id/etPrecoEtanol"
@@ -21,7 +21,7 @@
         android:id="@+id/tvPrecoGasolina"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Preço da Gasolina" />
+        android:text="@string/lbl_preco_da_gasolina" />
 
     <EditText
         android:id="@+id/etPrecoGasolina"
@@ -49,14 +49,15 @@
 
         <Button
             android:id="@+id/btVerCombustivelRecomendado"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="30"
+            android:layout_weight="60"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
-            android:text="Qual combustível?" />
+            android:text="@string/lbl_qual_combustivel" />
+
     </LinearLayout>
 
 </LinearLayout>

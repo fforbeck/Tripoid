@@ -20,59 +20,59 @@
                 android:id="@+id/tvKm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Km" />
+                android:text="@string/lbl_km" />
 
             <EditText
                 android:id="@+id/etKm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="300"
+                android:hint="@string/hint_300"
                 android:inputType="numberDecimal" />
 
             <TextView
                 android:id="@+id/tvKmL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Km/L" />
+                android:text="@string/lbl_km_l" />
 
             <EditText
                 android:id="@+id/etKmL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="11.5"
+                android:hint="@string/hint_11_5"
                 android:inputType="numberDecimal" />
 
             <TextView
                 android:id="@+id/tvValorCombustivel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Valor do combustível" />
+                android:text="@string/lbl_valor_do_combustivel" />
 
             <EditText
                 android:id="@+id/etValorCombustivel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="1.79"
+                android:hint="@string/hint_1_79"
                 android:inputType="numberDecimal" />
 
             <TextView
                 android:id="@+id/tvNumeroPassageiros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Número de passageiros" />
+                android:text="@string/lbl_numero_de_passageiros" />
 
             <EditText
                 android:id="@+id/etNumeroPassageiros"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="4"
+                android:hint="@string/hint_4"
                 android:inputType="number" />
 
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total: R$ "
+                android:text="@string/lbl_total"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -82,10 +82,10 @@
                 android:paddingBottom="5dp" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/tvTotalPassageiro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total / passageiro: R$ "
+                android:text="@string/lbl_total_passageiro"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
@@ -108,14 +108,14 @@
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="50"
-                android:text="Novo item" />
+                android:text="@string/lbl_novo_item" />
 
             <Button
-                android:id="@+id/btCalcular"
+                android:id="@+id/btCalcularValorViagem"
                 android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="50"
-                android:text="Calcular" >
+                android:text="@string/lbl_calcular" >
             </Button>
         </LinearLayout>
     </LinearLayout>

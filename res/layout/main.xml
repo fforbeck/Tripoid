@@ -19,13 +19,6 @@
             android:id="@android:id/tabcontent"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:padding="5dp" >
-
-            <include layout="@layout/tab_calculadora_viagem" />
-            <include layout="@layout/tab_calculadora_combustivel" />
-            <include layout="@layout/tab_calculadora_consumo" />
-            
-        </FrameLayout>
+            android:padding="5dp" />
     </LinearLayout>
-
 </TabHost>

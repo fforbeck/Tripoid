@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
 
-public class TripoidActivity extends TabActivity implements View.OnClickListener {
-	
+public class TripoidActivity extends TabActivity {
+
+	private static final String TAG_CALC_CONSUMO = "calc_consumo";
+	private static final String TAG_CALC_COMBUSTIVEL = "calc_combustivel";
+	private static final String TAG_CALC_VIAGEM = "calc_viagem";
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,7 +21,7 @@ public class TripoidActivity extends TabActivity implements View.OnClickListener
 	}
 	
 	private void init() {
-		final TabHost tabHost = getTabHost();
+		final TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
 		tabHost.setup();
 		final Resources res = getResources();
 		
@@ -29,44 +31,34 @@ public class TripoidActivity extends TabActivity implements View.OnClickListener
 	}
 
 	private void createTabCalculadoraViagem(final TabHost tabHost, final Resources res) {
-		final Intent intent = new Intent().setClass(this, CalculadoraViagemActivity.class);
 		newTabSpec(tabHost, 
-				"calc_viagem", 
-				R.id.tabCalcViagem, 
-				"Calculadora", 
+				TAG_CALC_VIAGEM, 
+				getString(R.string.lbl_calculadora), 
 				res.getDrawable(R.drawable.ic_tab_calc_viagem), 
-				intent);
+				new Intent(TripoidActivity.this, CalculadoraViagemActivity.class));
 	}
 	
 	private void createTabCalculadoraCombustivel(final TabHost tabHost, final Resources res) {
-		final Intent intent = new Intent().setClass(this, CalculadoraCombustivelActivity.class);
 		newTabSpec(tabHost, 
-				"calc_viagem", 
-				R.id.tabCalcCombustivel, 
-				"Combustível", 
+				TAG_CALC_COMBUSTIVEL, 
+				getString(R.string.lbl_combustivel), 
 				res.getDrawable(R.drawable.ic_tab_calc_comb), 
-				intent);
+				new Intent(TripoidActivity.this, CalculadoraCombustivelActivity.class));
 	}
 	
 	private void createTabCalculadoraConsumo(TabHost tabHost, Resources res) {
-		final Intent intent = new Intent().setClass(this, CalculadoraViagemActivity.class);
 		newTabSpec(tabHost, 
-				"calc_consumo", 
-				R.id.tabCalcConsumo, 
-				"Consumo", 
+				TAG_CALC_CONSUMO, 
+				getString(R.string.lbl_consumo), 
 				res.getDrawable(R.drawable.ic_tab_calc_consumo), 
-				intent);
+				new Intent(TripoidActivity.this, CalculadoraConsumoActivity.class));
 	}
 	
-	private void newTabSpec(final TabHost tabHost, String tag, int tabId, String label, Drawable icon, Intent intent) {
-		final TabSpec tabSpec = tabHost.newTabSpec(tag);
-		tabSpec.setContent(tabId);
-		tabSpec.setIndicator(label, icon);
-		tabHost.addTab(tabSpec);
-	}
-
-	@Override
-	public void onClick(View v) {
+	private void newTabSpec(final TabHost tabHost, String tag, String label, Drawable icon, Intent intent) {
+		tabHost.addTab(tabHost
+				.newTabSpec(tag)
+				.setContent(intent)
+				.setIndicator(label, icon));
 	}
 
 }

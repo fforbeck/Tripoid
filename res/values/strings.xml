@@ -1,4 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tripoid</string>
+    <string name="hint_11_5">11.5</string>
+    <string name="hint_1_79">1.79</string>
+    <string name="hint_300">300</string>
+    <string name="hint_4">4</string>
+    <string name="hint_novo_item">Exemplo: 30.50 (Pneu furado)</string>
+    <string name="lbl_calculadora">Calculadora</string>
+    <string name="lbl_calcular">Calcular</string>
+    <string name="lbl_combustivel">Combustível</string>
+    <string name="lbl_consumo">Consumo</string>
+    <string name="lbl_km_final">Km final</string>
+    <string name="lbl_km_inicial">Km inicial</string>
+    <string name="lbl_km">Km</string>
+    <string name="lbl_km_l">Km/L</string>
+    <string name="lbl_novo_item">Novo item</string>
+    <string name="lbl_numero_de_passageiros">Número de passageiros</string>
+    <string name="lbl_preco_da_gasolina">Preço da Gasolina</string>
+    <string name="lbl_preco_do_etanol">Preço do Etanol</string>
+    <string name="lbl_qual_combustivel">Qual combustível?</string>
+    <string name="lbl_quantidade_de_combustivel_em_litros">Quantidade de combustível em litros</string>
+    <string name="lbl_slogan">Calculadora para viagens</string>
+    <string name="lbl_total_passageiro">Total / passageiro:</string>
+    <string name="lbl_total">Total:</string>
+    <string name="lbl_valor_do_combustivel">Valor do combustível</string>
+    <string name="msg_campos_obrigatorios">Por favor preencha todos os campos.</string>
+    <string name="msg_numero_limite_itens">Não é permitido inserir mais itens.</string>
+    <string name="msg_valor_invalido">Não é permitido o valor 0 (zero) ou nulo.</string>
+    <string name="msg_recomendar_gasolina">Recomendo que você abasteça com Gasolina.</string>
+    <string name="msg_recomendar_etanol">Recomendo que você abasteça com Etanol.</string>
 </resources>

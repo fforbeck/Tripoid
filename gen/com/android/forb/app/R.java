@@ -15,15 +15,13 @@ public final class R {
         public static final int ic_tab_calc_comb=0x7f020001;
         public static final int ic_tab_calc_consumo=0x7f020002;
         public static final int ic_tab_calc_viagem=0x7f020003;
-        public static final int icon=0x7f020004;
-        public static final int minus=0x7f020005;
-        public static final int plus=0x7f020006;
-        public static final int splash=0x7f020007;
+        public static final int remove_item=0x7f020004;
+        public static final int splash=0x7f020005;
     }
     public static final class id {
-        public static final int btAddItem=0x7f060021;
-        public static final int btCalcular=0x7f060022;
+        public static final int btAddItem=0x7f060022;
         public static final int btCalcularConsumo=0x7f060012;
+        public static final int btCalcularValorViagem=0x7f060023;
         public static final int btVerCombustivelRecomendado=0x7f060009;
         public static final int etKm=0x7f060017;
         public static final int etKmFinal=0x7f06000e;
@@ -54,7 +52,8 @@ public final class R {
         public static final int tvPrecoEtanol=0x7f060003;
         public static final int tvPrecoGasolina=0x7f060005;
         public static final int tvResultado=0x7f06001f;
-        public static final int tvResultadoPorPassageiro=0x7f060020;
+        public static final int tvResultadoPorPassageiro=0x7f060021;
+        public static final int tvTotalPassageiro=0x7f060020;
         public static final int tvValorCombustivel=0x7f06001a;
     }
     public static final class layout {
@@ -66,6 +65,34 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int hint_11_5=0x7f040001;
+        public static final int hint_1_79=0x7f040002;
+        public static final int hint_300=0x7f040003;
+        public static final int hint_4=0x7f040004;
+        public static final int hint_novo_item=0x7f040005;
+        public static final int lbl_calculadora=0x7f040006;
+        public static final int lbl_calcular=0x7f040007;
+        public static final int lbl_combustivel=0x7f040008;
+        public static final int lbl_consumo=0x7f040009;
+        public static final int lbl_km=0x7f04000c;
+        public static final int lbl_km_final=0x7f04000a;
+        public static final int lbl_km_inicial=0x7f04000b;
+        public static final int lbl_km_l=0x7f04000d;
+        public static final int lbl_novo_item=0x7f04000e;
+        public static final int lbl_numero_de_passageiros=0x7f04000f;
+        public static final int lbl_preco_da_gasolina=0x7f040010;
+        public static final int lbl_preco_do_etanol=0x7f040011;
+        public static final int lbl_qual_combustivel=0x7f040012;
+        public static final int lbl_quantidade_de_combustivel_em_litros=0x7f040013;
+        public static final int lbl_slogan=0x7f040014;
+        public static final int lbl_total=0x7f040016;
+        public static final int lbl_total_passageiro=0x7f040015;
+        public static final int lbl_valor_do_combustivel=0x7f040017;
+        public static final int msg_campos_obrigatorios=0x7f040018;
+        public static final int msg_numero_limite_itens=0x7f040019;
+        public static final int msg_recomendar_etanol=0x7f04001c;
+        public static final int msg_recomendar_gasolina=0x7f04001b;
+        public static final int msg_valor_invalido=0x7f04001a;
     }
     public static final class style {
         public static final int CALCULATOR=0x7f050000;

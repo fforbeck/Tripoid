@@ -9,7 +9,7 @@
         android:id="@+id/tvKmInicial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Km inicial" />
+        android:text="@string/lbl_km_inicial" />
 
     <EditText
         android:id="@+id/etKmInicial"
@@ -21,7 +21,7 @@
         android:id="@+id/tvKmFinal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Km final" />
+        android:text="@string/lbl_km_final" />
 
     <EditText
         android:id="@+id/etKmFinal"
@@ -33,7 +33,7 @@
         android:id="@+id/tvLCombustivel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Combustível (L)" />
+        android:text="@string/lbl_quantidade_de_combustivel_em_litros" />
 
     <EditText
         android:id="@+id/etLCombustivel"
@@ -61,14 +61,14 @@
 
         <Button
             android:id="@+id/btCalcularConsumo"
-            android:layout_width="fill_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="50"
             android:paddingBottom="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="10dp"
-            android:text="Calcular" />
+            android:text="@string/lbl_calcular" />
     </LinearLayout>
 
 </LinearLayout>
