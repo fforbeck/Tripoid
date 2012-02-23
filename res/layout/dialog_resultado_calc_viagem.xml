@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root_calc_viagem"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <ImageView
+        android:id="@+id/image_viagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/cash"
+        android:contentDescription="@string/lbl_notificacao" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="100" >
+
+        <TextView
+            android:id="@+id/tvResultado"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/tvResultadoPorPassageiro"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+</LinearLayout>

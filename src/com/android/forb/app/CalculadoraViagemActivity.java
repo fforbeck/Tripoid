@@ -1,6 +1,7 @@
 package com.android.forb.app;
 
 import static android.graphics.Color.rgb;
+import static com.android.forb.util.NumberUtil.format;
 import static com.android.forb.util.NumberUtil.isZeroOrNull;
 import static com.android.forb.util.NumberUtil.round;
 import static com.android.forb.util.NumberUtil.toDouble;
@@ -10,9 +11,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +47,10 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 	private Button buttonCalcular;
 	private Button buttonAddItem;
 
+	private View dialogLayout;
+
+	private AlertDialog alertDialog;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,9 +59,6 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 	}
 	
 	private void init() {
-		tvResultado = (TextView) findViewById(R.id.tvResultado);
-		tvResultadoPorPassageiro = (TextView) findViewById(R.id.tvResultadoPorPassageiro);
-
 		etKm = (EditText) findViewById(R.id.etKm);
 		etKmL = (EditText) findViewById(R.id.etKmL);
 		etValorCombustivel = (EditText) findViewById(R.id.etValorCombustivel);
@@ -62,8 +69,23 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 
 		buttonAddItem = (Button) findViewById(R.id.btAddItem);
 		buttonAddItem.setOnClickListener(CalculadoraViagemActivity.this);
+		
+		alertDialog = createDialog();
 
 		setValues();
+	}
+	
+	private AlertDialog createDialog() {
+		final LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+		dialogLayout = inflater.inflate(R.layout.dialog_resultado_calc_viagem,
+		                               (ViewGroup) findViewById(R.id.layout_root_calc_viagem));
+		
+		final Builder builder = new AlertDialog.Builder(CalculadoraViagemActivity.this);
+		builder.setView(dialogLayout);
+		final AlertDialog alertDialog = builder.create();
+		alertDialog.setTitle(getString(R.string.dialog_title_calc_viagem));
+		alertDialog.setCancelable(true);
+		return alertDialog;
 	}
 	
 	private void setValues() {
@@ -91,28 +113,27 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 	private void calcular() {
 		double sum = sumItens();
 		final Double amount = calcular(sum);
-
-		tvResultado.setTextSize(25);
-		tvResultado.setTextColor(rgb(53, 201, 252));
-		tvResultado.setText(String.valueOf(amount));
-
-		// 26 164 169
-		// 215 250 233
-		// 262 88 248
-		// 36 246 155
-		// 77 81 214
-		// 150 131 247
-		// 120 218 54
-		// 53 201 252
-
-		tvResultadoPorPassageiro.setTextColor(rgb(120, 218, 54));
-		tvResultadoPorPassageiro.setText(String
-				.valueOf(dividirPorNumeroPassageiros(amount)));
-
-		AppUtil.hideSwKeyBoard(etNumeroPassageiros,
-				CalculadoraViagemActivity.this);
+		
+		setTextOnTVResultado(amount);
+		setTextOnTVResultadoPorPessoa(amount);
+		
+		alertDialog.show();
+		
+		AppUtil.hideSwKeyBoard(etNumeroPassageiros, CalculadoraViagemActivity.this);
 	}
 
+	private void setTextOnTVResultado(final Double amount) {
+		tvResultado = (TextView) dialogLayout.findViewById(R.id.tvResultado);
+		tvResultado.setTextColor(rgb(53, 201, 252));
+		tvResultado.setText(getString(R.string.moeda) + format(amount) + getString(R.string.lbl_no_total));
+	}
+
+	private void setTextOnTVResultadoPorPessoa(final Double amount) {
+		tvResultadoPorPassageiro = (TextView) dialogLayout.findViewById(R.id.tvResultadoPorPassageiro);
+		tvResultadoPorPassageiro.setTextColor(rgb(120, 218, 54));
+		tvResultadoPorPassageiro.setText(getString(R.string.moeda) + format(dividirPorNumeroPassageiros(amount)) + getString(R.string.lbl_por_pessoa));
+	}
+	
 	private void doAddItem() {
 		if (getNumItens() == MAX_NUM_ITENS) {
 			ToastUtil.show(CalculadoraViagemActivity.this,
@@ -172,12 +193,10 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 
 		final LinearLayout externLinerLayout = new LinearLayout(CalculadoraViagemActivity.this);
 		externLinerLayout.setId(7 * idCounter);
-		externLinerLayout.setWeightSum(100);
 		externLinerLayout.setOrientation(LinearLayout.HORIZONTAL);
 
 		final LinearLayout textLinearLayout = new LinearLayout(CalculadoraViagemActivity.this);
 		textLinearLayout.setId(1000 + idCounter);
-		textLinearLayout.setWeightSum(60);
 		textLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
 		final EditText editText = new EditText(CalculadoraViagemActivity.this);
 		editText.setId(100 + idCounter);
@@ -193,16 +212,17 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 
 		final LinearLayout buttonLinearLayout = new LinearLayout(CalculadoraViagemActivity.this);
 		buttonLinearLayout.setId(10 + idCounter);
-		buttonLinearLayout.setWeightSum(40);
 		buttonLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+		buttonLinearLayout.setVerticalGravity(Gravity.CENTER_VERTICAL);
 		buttonLinearLayout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.FILL_PARENT));
 		
 		final Button button = new Button(CalculadoraViagemActivity.this);
 		button.setId(idCounter);
 		button.setBackgroundResource(R.drawable.remove_item);
-		button.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-				LayoutParams.FILL_PARENT));
+		button.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+				LayoutParams.WRAP_CONTENT));
+		button.setPadding(5, 5, 5, 5);
 		button.setOnClickListener(new View.OnClickListener() {
 
 			@Override
