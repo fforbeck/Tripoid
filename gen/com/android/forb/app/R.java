@@ -83,6 +83,7 @@ public final class R {
         public static final int hint_novo_item=0x7f040005;
         public static final int lbl_calculadora=0x7f040006;
         public static final int lbl_calcular=0x7f040007;
+        public static final int lbl_cbx_ida_volta=0x7f040021;
         public static final int lbl_combustivel=0x7f040008;
         public static final int lbl_consumo=0x7f040009;
         public static final int lbl_km=0x7f04000c;

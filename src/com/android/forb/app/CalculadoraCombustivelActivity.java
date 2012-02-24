@@ -8,6 +8,7 @@ import static com.android.forb.util.StringUtil.isBlank;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,6 +55,12 @@ public class CalculadoraCombustivelActivity extends Activity implements View.OnC
 		
 		final Builder builder = new AlertDialog.Builder(CalculadoraCombustivelActivity.this);
 		builder.setView(dialogLayout);
+		builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            	dialog.dismiss();
+                return;
+          } });
+		
 		final AlertDialog alertDialog = builder.create();
 		alertDialog.setTitle(getString(R.string.lbl_combustivel));
 		alertDialog.setCancelable(true);

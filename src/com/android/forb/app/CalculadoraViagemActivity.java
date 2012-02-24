@@ -13,6 +13,7 @@ import java.util.Set;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
@@ -82,12 +83,35 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 		
 		final Builder builder = new AlertDialog.Builder(CalculadoraViagemActivity.this);
 		builder.setView(dialogLayout);
+		builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            	dialog.dismiss();
+                return;
+          } });
+		
 		final AlertDialog alertDialog = builder.create();
 		alertDialog.setTitle(getString(R.string.dialog_title_calc_viagem));
-		alertDialog.setCancelable(true);
+		alertDialog.setCancelable(false);
 		return alertDialog;
 	}
 	
+	{
+//		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//		builder.setMessage("Are you sure you want to exit?")
+//		       .setCancelable(false)
+//		       .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//		           public void onClick(DialogInterface dialog, int id) {
+//		                MyActivity.this.finish();
+//		           }
+//		       })
+//		       .setNegativeButton("No", new DialogInterface.OnClickListener() {
+//		           public void onClick(DialogInterface dialog, int id) {
+//		                dialog.cancel();
+//		           }
+//		       });
+//		AlertDialog alert = builder.create();
+		
+	}
 	private void setValues() {
 		etKm.setText("300");
 		etKmL.setText("11.5");

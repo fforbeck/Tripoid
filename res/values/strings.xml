@@ -33,4 +33,5 @@
     <string name="lbl_no_total">" no total"</string>
     <string name="lbl_por_pessoa">" por pessoa"</string>
     <string name="lbl_title_dialog_consumo">Consumo médio</string>
+    <string name="lbl_cbx_ida_volta">Ida e Volta</string>
 </resources>
