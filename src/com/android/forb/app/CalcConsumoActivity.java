@@ -20,7 +20,7 @@ import android.widget.TextView;
 import com.android.forb.util.AppUtil;
 import com.android.forb.util.ToastUtil;
 
-public class CalculadoraConsumoActivity extends Activity implements View.OnClickListener {
+public class CalcConsumoActivity extends Activity implements View.OnClickListener {
 
 	private EditText etKmInicial;
 	private EditText etKmFinal;
@@ -44,7 +44,7 @@ public class CalculadoraConsumoActivity extends Activity implements View.OnClick
 		etLitrosComb = (EditText) findViewById(R.id.etLCombustivel);
 
 		buttonCalcularConsumo = (Button) findViewById(R.id.btCalcularConsumo);
-		buttonCalcularConsumo.setOnClickListener(CalculadoraConsumoActivity.this);
+		buttonCalcularConsumo.setOnClickListener(CalcConsumoActivity.this);
 		
 		alertDialog = createDialog();
 		
@@ -62,7 +62,7 @@ public class CalculadoraConsumoActivity extends Activity implements View.OnClick
 		dialogLayout = inflater.inflate(R.layout.dialog_resultado_calc_consumo,
 		                               (ViewGroup) findViewById(R.id.layout_root_calc_consumo));
 		
-		final Builder builder = new AlertDialog.Builder(CalculadoraConsumoActivity.this);
+		final Builder builder = new AlertDialog.Builder(CalcConsumoActivity.this);
 		builder.setView(dialogLayout);
 		builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -89,14 +89,14 @@ public class CalculadoraConsumoActivity extends Activity implements View.OnClick
 
 	private boolean isValidState() {
 		if (isBlankFields()) {
-			ToastUtil.show(CalculadoraConsumoActivity.this,
+			ToastUtil.show(CalcConsumoActivity.this,
 					getString(R.string.msg_campos_obrigatorios));
 
 			return false;
 		}
 
 		if (isInvalidFields()) {
-			ToastUtil.show(CalculadoraConsumoActivity.this,
+			ToastUtil.show(CalcConsumoActivity.this,
 					getString(R.string.msg_valor_invalido));
 
 			return false;
@@ -130,7 +130,7 @@ public class CalculadoraConsumoActivity extends Activity implements View.OnClick
 		
 		alertDialog.show();
 		
-		AppUtil.hideSwKeyBoard(etLitrosComb, CalculadoraConsumoActivity.this);
+		AppUtil.hideSwKeyBoard(etLitrosComb, CalcConsumoActivity.this);
 	}
 	
 	private void setTextOnTVConsumoMedio(final Double value) {

@@ -35,7 +35,7 @@ public class TripoidActivity extends TabActivity {
 				TAG_CALC_VIAGEM, 
 				getString(R.string.lbl_calculadora), 
 				res.getDrawable(R.drawable.ic_tab_calc_viagem), 
-				new Intent(TripoidActivity.this, CalculadoraViagemActivity.class));
+				new Intent(TripoidActivity.this, CalcViagemActivity.class));
 	}
 	
 	private void createTabCalculadoraCombustivel(final TabHost tabHost, final Resources res) {
@@ -43,7 +43,7 @@ public class TripoidActivity extends TabActivity {
 				TAG_CALC_COMBUSTIVEL, 
 				getString(R.string.lbl_combustivel), 
 				res.getDrawable(R.drawable.ic_tab_calc_comb), 
-				new Intent(TripoidActivity.this, CalculadoraCombustivelActivity.class));
+				new Intent(TripoidActivity.this, CalcCombustivelActivity.class));
 	}
 	
 	private void createTabCalculadoraConsumo(TabHost tabHost, Resources res) {
@@ -51,7 +51,7 @@ public class TripoidActivity extends TabActivity {
 				TAG_CALC_CONSUMO, 
 				getString(R.string.lbl_consumo), 
 				res.getDrawable(R.drawable.ic_tab_calc_consumo), 
-				new Intent(TripoidActivity.this, CalculadoraConsumoActivity.class));
+				new Intent(TripoidActivity.this, CalcConsumoActivity.class));
 	}
 	
 	private void newTabSpec(final TabHost tabHost, String tag, String label, Drawable icon, Intent intent) {

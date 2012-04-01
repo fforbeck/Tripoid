@@ -30,13 +30,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CalculadoraCombustivelActivity"
+            android:name=".CalcCombustivelActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CalculadoraViagemActivity"
+            android:name=".CalcViagemActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CalculadoraConsumoActivity"
+            android:name=".CalcConsumoActivity"
             android:screenOrientation="portrait" />
     </application>
 

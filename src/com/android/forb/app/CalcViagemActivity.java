@@ -29,7 +29,7 @@ import android.widget.TextView;
 import com.android.forb.util.AppUtil;
 import com.android.forb.util.ToastUtil;
 
-public class CalculadoraViagemActivity extends Activity implements View.OnClickListener {
+public class CalcViagemActivity extends Activity implements View.OnClickListener {
 
 	private static final int MAX_NUM_ITENS = 10;
 	
@@ -66,10 +66,10 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 		etNumeroPassageiros = (EditText) findViewById(R.id.etNumeroPassageiros);
 
 		buttonCalcular = (Button) findViewById(R.id.btCalcularValorViagem);
-		buttonCalcular.setOnClickListener(CalculadoraViagemActivity.this);
+		buttonCalcular.setOnClickListener(CalcViagemActivity.this);
 
 		buttonAddItem = (Button) findViewById(R.id.btAddItem);
-		buttonAddItem.setOnClickListener(CalculadoraViagemActivity.this);
+		buttonAddItem.setOnClickListener(CalcViagemActivity.this);
 		
 		alertDialog = createDialog();
 
@@ -81,7 +81,7 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 		dialogLayout = inflater.inflate(R.layout.dialog_resultado_calc_viagem,
 		                               (ViewGroup) findViewById(R.id.layout_root_calc_viagem));
 		
-		final Builder builder = new AlertDialog.Builder(CalculadoraViagemActivity.this);
+		final Builder builder = new AlertDialog.Builder(CalcViagemActivity.this);
 		builder.setView(dialogLayout);
 		builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -143,7 +143,7 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 		
 		alertDialog.show();
 		
-		AppUtil.hideSwKeyBoard(etNumeroPassageiros, CalculadoraViagemActivity.this);
+		AppUtil.hideSwKeyBoard(etNumeroPassageiros, CalcViagemActivity.this);
 	}
 
 	private void setTextOnTVResultado(final Double amount) {
@@ -160,7 +160,7 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 	
 	private void doAddItem() {
 		if (getNumItens() == MAX_NUM_ITENS) {
-			ToastUtil.show(CalculadoraViagemActivity.this,
+			ToastUtil.show(CalcViagemActivity.this,
 					getString(R.string.msg_numero_limite_itens));
 			return;
 		}
@@ -170,14 +170,14 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 
 	private boolean isValidState() {
 		if (isBlankFields()) {
-			ToastUtil.show(CalculadoraViagemActivity.this,
+			ToastUtil.show(CalcViagemActivity.this,
 					getString(R.string.msg_campos_obrigatorios));
 
 			return false;
 		}
 
 		if (isInvalidFields()) {
-			ToastUtil.show(CalculadoraViagemActivity.this,
+			ToastUtil.show(CalcViagemActivity.this,
 					getString(R.string.msg_valor_invalido));
 
 			return false;
@@ -215,14 +215,14 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 	private boolean newItem(final LinearLayout linearLayout) {
 		itensIDs.add(++idCounter);
 
-		final LinearLayout externLinerLayout = new LinearLayout(CalculadoraViagemActivity.this);
+		final LinearLayout externLinerLayout = new LinearLayout(CalcViagemActivity.this);
 		externLinerLayout.setId(7 * idCounter);
 		externLinerLayout.setOrientation(LinearLayout.HORIZONTAL);
 
-		final LinearLayout textLinearLayout = new LinearLayout(CalculadoraViagemActivity.this);
+		final LinearLayout textLinearLayout = new LinearLayout(CalcViagemActivity.this);
 		textLinearLayout.setId(1000 + idCounter);
 		textLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
-		final EditText editText = new EditText(CalculadoraViagemActivity.this);
+		final EditText editText = new EditText(CalcViagemActivity.this);
 		editText.setId(100 + idCounter);
 		editText.setHint(R.string.hint_novo_item);
 		editText.setFocusable(true);
@@ -234,14 +234,14 @@ public class CalculadoraViagemActivity extends Activity implements View.OnClickL
 		textLinearLayout.addView(editText);
 		externLinerLayout.addView(textLinearLayout);
 
-		final LinearLayout buttonLinearLayout = new LinearLayout(CalculadoraViagemActivity.this);
+		final LinearLayout buttonLinearLayout = new LinearLayout(CalcViagemActivity.this);
 		buttonLinearLayout.setId(10 + idCounter);
 		buttonLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
 		buttonLinearLayout.setVerticalGravity(Gravity.CENTER_VERTICAL);
 		buttonLinearLayout.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.FILL_PARENT));
 		
-		final Button button = new Button(CalculadoraViagemActivity.this);
+		final Button button = new Button(CalcViagemActivity.this);
 		button.setId(idCounter);
 		button.setBackgroundResource(R.drawable.remove_item);
 		button.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,

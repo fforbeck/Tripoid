@@ -21,7 +21,7 @@ import com.android.forb.util.AppUtil;
 import com.android.forb.util.NumberUtil;
 import com.android.forb.util.ToastUtil;
 
-public class CalculadoraCombustivelActivity extends Activity implements View.OnClickListener {
+public class CalcCombustivelActivity extends Activity implements View.OnClickListener {
 
 	private EditText etPrecoEtanol;
 	private EditText etPrecoGasolina;
@@ -41,7 +41,7 @@ public class CalculadoraCombustivelActivity extends Activity implements View.OnC
 		etPrecoEtanol = (EditText) findViewById(R.id.etPrecoEtanol);
 		etPrecoGasolina = (EditText) findViewById(R.id.etPrecoGasolina);
 		btVerCombustivelRecomendado = (Button) findViewById(R.id.btVerCombustivelRecomendado);
-		btVerCombustivelRecomendado.setOnClickListener(CalculadoraCombustivelActivity.this);
+		btVerCombustivelRecomendado.setOnClickListener(CalcCombustivelActivity.this);
 		
 		alertDialog = createDialog();
 		
@@ -53,7 +53,7 @@ public class CalculadoraCombustivelActivity extends Activity implements View.OnC
 		dialogLayout = inflater.inflate(R.layout.dialog_resultado_calc_combustivel,
 		                               (ViewGroup) findViewById(R.id.layout_root_calc_combust));
 		
-		final Builder builder = new AlertDialog.Builder(CalculadoraCombustivelActivity.this);
+		final Builder builder = new AlertDialog.Builder(CalcCombustivelActivity.this);
 		builder.setView(dialogLayout);
 		builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
@@ -85,14 +85,14 @@ public class CalculadoraCombustivelActivity extends Activity implements View.OnC
 
 	private boolean isValidState() {
 		if (isBlankFields()) {
-			ToastUtil.show(CalculadoraCombustivelActivity.this,
+			ToastUtil.show(CalcCombustivelActivity.this,
 					getString(R.string.msg_campos_obrigatorios));
 
 			return false;
 		}
 
 		if (isInvalidFields()) {
-			ToastUtil.show(CalculadoraCombustivelActivity.this,
+			ToastUtil.show(CalcCombustivelActivity.this,
 					getString(R.string.msg_valor_invalido));
 
 			return false;
@@ -125,7 +125,7 @@ public class CalculadoraCombustivelActivity extends Activity implements View.OnC
 		
 		alertDialog.show();
 		
-		AppUtil.hideSwKeyBoard(etPrecoGasolina, CalculadoraCombustivelActivity.this);
+		AppUtil.hideSwKeyBoard(etPrecoGasolina, CalcCombustivelActivity.this);
 	}
 
 	private void setTextOnTVCombustivelRecomendado(double result, String recomend) {
